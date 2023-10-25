@@ -1,6 +1,7 @@
 import NextAuth, {getServerSession} from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 const adminEmails = ['ritik123453@gmail.com','ritikranjan539@gmail.com'];
+import axios from 'axios'
 
 export const authOptions = {
   secret: process.env.SECRET,
@@ -11,8 +12,15 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    session: ({session,token,user}) => {
+    session: async ({session,token,user}) => {
       if (adminEmails.includes(session?.user?.email)) {
+        const data = {
+          email: session.email,
+          session: session
+        }
+        console.log(session);
+        console.log(session.user);
+        await axios.post('/api/userhistory', data)
         return session;
       } else {
         return false;

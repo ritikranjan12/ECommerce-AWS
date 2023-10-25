@@ -4,7 +4,6 @@ import Link from 'next/link'
 
 export default function Home() {
   const {data: session} = useSession();
-   
   return <Layout>
     <>
     <div className="text-blue-900 flex justify-between pt-2.5 border-b-4 border-b-blue-500 pb-4">
