@@ -40,6 +40,7 @@ export default async function handle(req, res) {
         //   console.error('Error:', error);
         //   res.status(500).json({ error: 'Error creating item' });
         // }
+        res.send(true)
       }
 
 }
