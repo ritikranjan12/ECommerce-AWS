@@ -11,6 +11,7 @@ export default function EditProductPage() {
   const [category, setCategory] = useState('');
   const [properties, setProperties] = useState([]);
   const [price, setPrice] = useState();
+  const [brand,setBrand] = useState('')
   const [images, setImages] = useState([]);
   const router = useRouter();
   const {id} = router.query;
@@ -19,9 +20,9 @@ export default function EditProductPage() {
       return;
     }
     axios.get('/api/products?id='+id).then(response => {
-      console.log(response.data)
       setSpecification(response.data.specification)
       setCategory(response.data.category)
+      setBrand(response.data.brand)
       setDescription(response.data.description)
       setImages(response.data.images)
       setPrice(response.data.price)
@@ -34,7 +35,7 @@ export default function EditProductPage() {
     <Layout>
       <h1>Edit product</h1>
       {title != '' && (
-        <EditForm id={id} title={title} specification={specification} description={description} category={category} images={images} properties={properties} price={price}/>
+        <EditForm id={id} title={title} specification={specification} description={description} category={category} images={images} properties={properties} price={price} brand={brand}/>
       )}
     </Layout>
   );

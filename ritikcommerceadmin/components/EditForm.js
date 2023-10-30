@@ -5,7 +5,7 @@ import Spinner from "@/components/Spinner";
 import { ReactSortable } from "react-sortablejs";
 
 export default function EditForm({
-  id,title,description,category,price,properties,images,specification
+  id,title,description,category,price,properties,images,specification,brand
 }) {
   
   const [Title, setTitle] = useState(title);
@@ -14,6 +14,7 @@ export default function EditForm({
   const [Specification,setSpecification] = useState(specification)
   const [productProperties, setProductProperties] = useState(properties);
   const [Price, setPrice] = useState(price);
+  const [Brand,setBrand] = useState(brand)
   const [Images, setImages] = useState(images);
   const [goToProducts, setGoToProducts] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -34,7 +35,8 @@ export default function EditForm({
       images:Images, 
       category:Category,
       properties: productProperties,
-      specification: Specification
+      specification: Specification,
+      brand:Brand
     };      
     await axios.put('/api/products', data);
     setGoToProducts(true);
@@ -147,6 +149,12 @@ export default function EditForm({
           <input type="file" onChange={uploadImages} className="hidden" />
         </label>
       </div>
+      <label>Brand</label>
+      <textarea
+        placeholder="Brand"
+        value={Brand}
+        onChange={ev => setBrand(ev.target.value)}
+      />
       <label>Description</label>
       <textarea
         placeholder="Description"
@@ -155,7 +163,7 @@ export default function EditForm({
       />
       <label>Specification</label>
       <textarea
-        placeholder="Description"
+        placeholder="Specification"
         value={Specification}
         onChange={ev => setSpecification(ev.target.value)}
       />

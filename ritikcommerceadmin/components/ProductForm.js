@@ -11,6 +11,7 @@ export default function ProductForm() {
   const [Category, setCategory] = useState('');
   const [productProperties, setProductProperties] = useState([]);
   const [Price, setPrice] = useState('');
+  const [Brand,setBrand] = useState('')
   const [Images, setImages] = useState([]);
   const [goToProducts, setGoToProducts] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -30,7 +31,8 @@ export default function ProductForm() {
       images: Images,
       category: Category,
       properties: productProperties,
-      specification: specification
+      specification: specification,
+      brand:Brand
     };
     await axios.post('/api/products', data);
     
@@ -144,6 +146,12 @@ export default function ProductForm() {
           <input type="file" onChange={uploadImages} className="hidden" />
         </label>
       </div>
+      <label>Brand</label>
+      <textarea
+        placeholder="Brand"
+        value={Brand}
+        onChange={ev => setBrand(ev.target.value)}
+      />
       <label>Description</label>
       <textarea
         placeholder="Description"
@@ -152,7 +160,7 @@ export default function ProductForm() {
       />
       <label>Specification</label>
       <textarea
-        placeholder="Description"
+        placeholder="specification"
         value={specification}
         onChange={ev => setSpecification(ev.target.value)}
       />
