@@ -11,7 +11,7 @@ export default function EditForm({
   const [Title, setTitle] = useState(title);
   const [Description, setDescription] = useState(description);
   const [Category, setCategory] = useState(category);
-  const [specification,setSpecification] = useState(specification)
+  const [Specification,setSpecification] = useState(specification)
   const [productProperties, setProductProperties] = useState(properties);
   const [Price, setPrice] = useState(price);
   const [Images, setImages] = useState(images);
@@ -34,7 +34,7 @@ export default function EditForm({
       images:Images, 
       category:Category,
       properties: productProperties,
-      specification: specification
+      specification: Specification
     };      
     await axios.put('/api/products', data);
     setGoToProducts(true);
@@ -156,7 +156,7 @@ export default function EditForm({
       <label>Specification</label>
       <textarea
         placeholder="Description"
-        value={specification}
+        value={Specification}
         onChange={ev => setSpecification(ev.target.value)}
       />
       <label>Price (in Rs)</label>
