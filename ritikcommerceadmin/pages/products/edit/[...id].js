@@ -14,6 +14,7 @@ export default function EditProductPage() {
   const [brand,setBrand] = useState('')
   const [images, setImages] = useState([]);
   const [featured,setFeatured] = useState(false)
+  const [discount,setDiscount] = useState(0)
   const router = useRouter();
   const {id} = router.query;
   useEffect(() => {
@@ -30,6 +31,7 @@ export default function EditProductPage() {
       setProperties(response.data.properties)
       setTitle(response.data.title)
       setFeatured(response.data.featured)
+      setDiscount(response.data.discount)
     });
   }, [id]);
   
@@ -37,7 +39,7 @@ export default function EditProductPage() {
     <Layout>
       <h1>Edit product</h1>
       {title != '' && (
-        <EditForm id={id} title={title} specification={specification} description={description} category={category} images={images} properties={properties} price={price} brand={brand} featured={featured}/>
+        <EditForm id={id} title={title} specification={specification} description={description} category={category} images={images} properties={properties} price={price} brand={brand} featured={featured} discount={discount}/>
       )}
     </Layout>
   );

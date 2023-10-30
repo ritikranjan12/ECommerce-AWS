@@ -17,6 +17,7 @@ export default function ProductForm() {
   const [goToProducts, setGoToProducts] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [discount,setDiscount] = useState(0);
   const router = useRouter();
   useEffect(() => {
     axios.get('/api/categories').then(result => {
@@ -34,7 +35,8 @@ export default function ProductForm() {
       properties: productProperties,
       specification: specification,
       brand:Brand,
-      featured:Featured
+      featured:Featured,
+      discount:discount
     };
     await axios.post('/api/products', data);
     
@@ -153,6 +155,13 @@ export default function ProductForm() {
         placeholder="Brand"
         value={Brand}
         onChange={ev => setBrand(ev.target.value)}
+      />
+      <label>Discount</label>
+      <input
+      type="number"
+        placeholder="Discount"
+        value={discount}
+        onChange={ev => setDiscount(ev.target.value)}
       />
       <label>Featured</label>
       
