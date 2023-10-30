@@ -1,6 +1,6 @@
 import NextAuth, {getServerSession} from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-const adminEmails = ['ritik123453@gmail.com','ritikranjan539@gmail.com'];
+const adminEmails = ['ritik123453@gmail.com','ritikranjan539@gmail.com','nabilhasib700@gmail.com'];
 
 
 export const authOptions = {
