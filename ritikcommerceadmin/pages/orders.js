@@ -21,13 +21,13 @@ export default function OrdersPage() {
             <th>Products</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="mx-2">
         {orders.length > 0 && orders.map(order => (
-          <tr key={order._id}>
+          <tr key={order.id}>
             <td>{(new Date(order.createdAt)).toLocaleString()}
             </td>
-            <td className={order.paid ? 'text-green-600' : 'text-red-600'}>
-              {order.paid ? 'YES' : 'NO'}
+            <td className={order.paid === 'true' ? 'text-green-600' : 'text-red-600'}>
+              {order.paid === 'true' ? 'YES' : 'NO'}
             </td>
             <td>
               {order.name} {order.email}<br />

@@ -7,6 +7,7 @@ import { ReactSortable } from "react-sortablejs";
 export default function ProductForm() {
   const [Title, setTitle] = useState('');
   const [Description, setDescription] = useState('');
+  const [specification,setSpecification] = useState('')
   const [Category, setCategory] = useState('');
   const [productProperties, setProductProperties] = useState([]);
   const [Price, setPrice] = useState('');
@@ -28,7 +29,8 @@ export default function ProductForm() {
       price:Price,
       images: Images,
       category: Category,
-      properties: productProperties
+      properties: productProperties,
+      specification: specification
     };
     await axios.post('/api/products', data);
     
@@ -147,6 +149,12 @@ export default function ProductForm() {
         placeholder="Description"
         value={Description}
         onChange={ev => setDescription(ev.target.value)}
+      />
+      <label>Specification</label>
+      <textarea
+        placeholder="Description"
+        value={specification}
+        onChange={ev => setSpecification(ev.target.value)}
       />
       <label>Price (in Rs)</label>
       <input

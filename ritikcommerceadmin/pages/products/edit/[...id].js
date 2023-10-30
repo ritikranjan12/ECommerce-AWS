@@ -7,6 +7,7 @@ import EditForm from "@/components/EditForm";
 export default function EditProductPage() {
   const [title,setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [specification,setSpecification] = useState('');
   const [category, setCategory] = useState('');
   const [properties, setProperties] = useState([]);
   const [price, setPrice] = useState();
@@ -19,6 +20,7 @@ export default function EditProductPage() {
     }
     axios.get('/api/products?id='+id).then(response => {
       console.log(response.data)
+      setSpecification(response.data.specification)
       setCategory(response.data.category)
       setDescription(response.data.description)
       setImages(response.data.images)
@@ -32,7 +34,7 @@ export default function EditProductPage() {
     <Layout>
       <h1>Edit product</h1>
       {title != '' && (
-        <EditForm id={id} title={title} description={description} category={category} images={images} properties={properties} price={price}/>
+        <EditForm id={id} title={title} specification={specification} description={description} category={category} images={images} properties={properties} price={price}/>
       )}
     </Layout>
   );

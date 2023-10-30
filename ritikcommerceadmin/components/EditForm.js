@@ -5,12 +5,13 @@ import Spinner from "@/components/Spinner";
 import { ReactSortable } from "react-sortablejs";
 
 export default function EditForm({
-  id,title,description,category,price,properties,images
+  id,title,description,category,price,properties,images,specification
 }) {
   
   const [Title, setTitle] = useState(title);
   const [Description, setDescription] = useState(description);
   const [Category, setCategory] = useState(category);
+  const [specification,setSpecification] = useState(specification)
   const [productProperties, setProductProperties] = useState(properties);
   const [Price, setPrice] = useState(price);
   const [Images, setImages] = useState(images);
@@ -32,7 +33,8 @@ export default function EditForm({
       price:Price, 
       images:Images, 
       category:Category,
-      properties: productProperties
+      properties: productProperties,
+      specification: specification
     };      
     await axios.put('/api/products', data);
     setGoToProducts(true);
@@ -150,6 +152,12 @@ export default function EditForm({
         placeholder="Description"
         value={Description}
         onChange={ev => setDescription(ev.target.value)}
+      />
+      <label>Specification</label>
+      <textarea
+        placeholder="Description"
+        value={specification}
+        onChange={ev => setSpecification(ev.target.value)}
       />
       <label>Price (in Rs)</label>
       <input
