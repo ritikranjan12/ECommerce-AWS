@@ -9,6 +9,7 @@ export default function ProductForm() {
   const [Description, setDescription] = useState('');
   const [specification,setSpecification] = useState('')
   const [Category, setCategory] = useState('');
+  const [Featured,setFeatured] = useState(false);
   const [productProperties, setProductProperties] = useState([]);
   const [Price, setPrice] = useState('');
   const [Brand,setBrand] = useState('')
@@ -32,7 +33,8 @@ export default function ProductForm() {
       category: Category,
       properties: productProperties,
       specification: specification,
-      brand:Brand
+      brand:Brand,
+      featured:Featured
     };
     await axios.post('/api/products', data);
     
@@ -151,6 +153,13 @@ export default function ProductForm() {
         placeholder="Brand"
         value={Brand}
         onChange={ev => setBrand(ev.target.value)}
+      />
+      <label>Featured</label>
+      
+      <input
+        type="checkbox"
+        checked={Featured}
+        onChange={ev => setFeatured(!Featured)}
       />
       <label>Description</label>
       <textarea

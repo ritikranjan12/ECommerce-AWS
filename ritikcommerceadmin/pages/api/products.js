@@ -49,13 +49,13 @@ export default async function handle(req, res) {
   }
 
   if (method === 'PUT') {
-    const { title, description, price, images, category, properties, id, specification,brand } = req.body;
+    const { title, description, price, images, category, properties, id, specification,brand,featured } = req.body;
     const command = new UpdateCommand({
       TableName: tableName,
       Key: {
         id: id.toString()
       },
-      UpdateExpression: 'set title = :title, description = :description, price = :price, images = :images, category = :category, properties = :properties, specification = :specification, brand= :brand',
+      UpdateExpression: 'set title = :title, description = :description, price = :price, images = :images, category = :category, properties = :properties, specification = :specification, brand= :brand, featured= :featured',
       ExpressionAttributeValues: {
         ':title': title,
         ':description': description,
@@ -65,6 +65,7 @@ export default async function handle(req, res) {
         ':properties': properties,
         ':specification' : specification,
         ':brand' : brand,
+        ':featured' : featured,
       },
       ReturnValues: 'ALL_NEW',
     })
@@ -78,7 +79,7 @@ export default async function handle(req, res) {
   }
 
   if (method === 'POST') {
-    const { title, description, price, images, category, properties,specification,brand } = req.body;
+    const { title, description, price, images, category, properties,specification,brand,featured } = req.body;
     const newId = uuidv4().toString();
     const command = new PutCommand({
       TableName: tableName,
@@ -92,6 +93,7 @@ export default async function handle(req, res) {
         properties,
         specification,
         brand,
+        featured,
       },
     })
     try {

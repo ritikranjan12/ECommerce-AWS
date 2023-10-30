@@ -5,7 +5,7 @@ import Spinner from "@/components/Spinner";
 import { ReactSortable } from "react-sortablejs";
 
 export default function EditForm({
-  id,title,description,category,price,properties,images,specification,brand
+  id,title,description,category,price,properties,images,specification,brand,featured
 }) {
   
   const [Title, setTitle] = useState(title);
@@ -14,6 +14,7 @@ export default function EditForm({
   const [Specification,setSpecification] = useState(specification)
   const [productProperties, setProductProperties] = useState(properties);
   const [Price, setPrice] = useState(price);
+  const [Featured,setFeatured] = useState(featured);
   const [Brand,setBrand] = useState(brand)
   const [Images, setImages] = useState(images);
   const [goToProducts, setGoToProducts] = useState(false);
@@ -36,7 +37,8 @@ export default function EditForm({
       category:Category,
       properties: productProperties,
       specification: Specification,
-      brand:Brand
+      brand:Brand,
+      featured:Featured
     };      
     await axios.put('/api/products', data);
     setGoToProducts(true);
@@ -154,6 +156,13 @@ export default function EditForm({
         placeholder="Brand"
         value={Brand}
         onChange={ev => setBrand(ev.target.value)}
+      />
+      <label>Featured</label>
+      
+      <input
+        type="checkbox"
+        checked={Featured}
+        onChange={ev => setFeatured(!Featured)}
       />
       <label>Description</label>
       <textarea
