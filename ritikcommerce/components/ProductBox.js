@@ -5,9 +5,9 @@ import Link from "next/link";
 import {useContext, useEffect,useState} from "react";
 import {CartContext} from "@/components/CartContext";
 import toast from "react-hot-toast";
+import Image from 'next/image';
 
 const ProductWrapper = styled.div`
-  
 `;
 
 const WhiteBox = styled(Link)`
@@ -78,7 +78,8 @@ export default function ProductBox({id,title,description,price,images,featured,d
     <ProductWrapper>
       <WhiteBox href={url}>
         <div>
-          <img src={images?.[0]} alt=""/>
+        <Image width={80} height={80} src={images?.[0]} alt="" />
+          
         </div>
       </WhiteBox>
       <ProductInfoBox>

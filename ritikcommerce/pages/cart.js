@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import styled from "styled-components";
 import Center from "@/components/Center";
 import Button from "@/components/Button";
@@ -11,7 +10,7 @@ import { useRouter } from 'next/router';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import toast from "react-hot-toast";
-
+import Image from 'next/image'
 const ColumnsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -111,6 +110,10 @@ export default function CartPage() {
     removeProduct(id);
   }
 
+  const handleSearch = () => {
+    toast.success("Order Confirmed!")
+    router.push('/');
+  }; 
   async function goToPayment() {
     if(name === '' || email === '' || city === '' || postalCode === '' || streetAddress === '' || country === '') {
       toast.error("All Field are required")
@@ -137,11 +140,12 @@ export default function CartPage() {
   for (const productId of cartProducts) {
     const product = products.find((p) => p.id === productId);
     if (product) {
-      total += product.price;
+      total += (product.price * (100 - product.discount)) / 100;
     }
   }
 
   if (isSuccess) {
+
     return (
       <>
         <Center style={{marginTop:'500px'}}>
@@ -150,10 +154,8 @@ export default function CartPage() {
               <h1>Thanks for your order!</h1>
               <p>We will email you when your order will be sent.</p>
               {clearCart()}
-              <p>Redirecting to Home page in 5 sec</p>
-              {setTimeout(() => {
-                router.push("/");
-              }, 4000)}
+              {handleSearch()}
+              
             </Box>
           </ColumnsWrapper>
         </Center>
@@ -186,7 +188,7 @@ export default function CartPage() {
                           <tr key={product.id}>
                             <ProductInfoCell>
                               <ProductImageBox>
-                                <img src={product.images[0]} alt="" />
+                                <Image width={120} height={120}  src={product.images[0]} alt="" />
                               </ProductImageBox>
                               {product.title}
                             </ProductInfoCell>
@@ -196,7 +198,7 @@ export default function CartPage() {
                               <Button onClick={() => moreOfThisProduct(product.id)}>+</Button>
                             </td>
                             <td>
-                              Rs.{cartProductQuantities[product.id] * product.price}
+                              Rs.{(cartProductQuantities[product.id] * product.price * (100 - product.discount)) / 100}
                             </td>
                           </tr>
                         );
