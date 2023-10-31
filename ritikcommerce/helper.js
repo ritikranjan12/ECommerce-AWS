@@ -1,1 +1,0 @@
-const backendUrl = 'https://nazcommerce.vercel.app/'
