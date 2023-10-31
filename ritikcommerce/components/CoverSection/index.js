@@ -1,9 +1,10 @@
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import { CoverContainer, CoverBg, CoverContent, CoverH1, CoverP } from './Element';
+import { CoverContainer, CoverBg } from './Element';
 import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link'
 
 const Container = styled.div`
   display: flex;
@@ -20,27 +21,73 @@ const Container = styled.div`
 const TextContainer = styled.div`
   text-align: center;
   margin-top: 3rem;
+  color: black;
 
   @media (min-width: 768px) {
     text-align: left;
-    width: 50%;
+    margin-left: 3rem;
   }
 `;
 
-const ImageContainers = styled.div`
+
+export const CoverH1 = styled.h1`
+  color: yellow;
+  font-size: 38px;
+  text-align: left;
+
+  @media screen and (max-width: 768px) {
+    font-size: 32px;
+    text-align: left;
+  }
+  
+  @media screen and (max-width: 480px) {
+    font-size: 28px;
+    text-align: left;
+  }
+`;
+
+export const CoverP = styled.p`
+  margin-top: 24px;
+  color: white;
+  font-size: 24px;
   text-align: center;
-  height: 100vh;
-  @media (min-width: 768px) {
-    text-align: right;
-    width: 50%;
+  max-width: 600px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 18px;
   }
 `;
 
-const ImageComponent = styled(Image)`
-  width: 100%;
-  height: 80%;
-  @media (min-width: 768px) {
-    width: auto;
+
+export const NavBtn = styled.nav`
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const NavBtnLink = styled(Link)`
+  border-radius: 50px;
+  background: #01bf71;
+  white-space: nowrap;
+  padding: 10px 22px;
+  color: #010606;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
   }
 `;
 
@@ -56,6 +103,51 @@ const CoverSection = () => {
 
     return (
         <CoverContainer>
+          <Container>
+            <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        minHeight: '20vh',
+        padding: '20px',
+      }}
+    >
+      <div
+        style={{
+          textAlign: 'center',
+          marginBottom: '20px',
+          fontSize: '24px',
+          
+        }}
+      >
+        <TextContainer>
+                    <CoverH1>Uncompromising Quality</CoverH1>
+                    
+                    <CoverP>Welcome to a world where excellence is the only currency, and where only the best will suffice.</CoverP>
+                
+                </TextContainer>
+      </div>
+
+      <div
+        style={{
+          maxWidth: '100%',
+          display: 'flex',
+          justifyItems: 'center',
+          alignItems: 'center',
+          margin:'auto'
+        }}
+      >
+        <Image src={'/image.jpg'} alt="heading Poster" width={300} height={300} />
+      </div>
+    </div>
+            
+                
+
+                
+            </Container>
             <CoverBg style={{ background: 'transparent' }}>
             <Particles
                     parent="CoverBg"
@@ -128,51 +220,7 @@ const CoverSection = () => {
                     }}
                 />
             </CoverBg>
-            <Container>
-            <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        minHeight: '20vh',
-        padding: '20px',
-      }}
-    >
-      <div
-        style={{
-          textAlign: 'center',
-          marginBottom: '20px',
-          marginTop: '40px',
-          fontSize: '24px',
-        }}
-      >
-        <TextContainer>
-                    <CoverH1>Discover Uncompromising Quality</CoverH1>
-                    <CoverP>Welcome to a world where excellence is the only currency, and where only the best will suffice.</CoverP>
-                   
-                </TextContainer>
-      </div>
-
-      <div
-        style={{
-          maxWidth: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <ImageContainers>
-                    <ImageComponent src="/image.jpg" width={700} height={350} alt="Banner Image" />
-                </ImageContainers>
-      </div>
-    </div>
             
-                
-
-                
-            </Container>
         </CoverContainer>
     );
 };

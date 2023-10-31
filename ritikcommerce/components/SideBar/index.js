@@ -15,15 +15,16 @@ const Sidebar = ({ isOpen, toggle }) => {
       <SearchBox toggle={toggle} />
       <SidebarWrapper>
         <SidebarMenu>         
-          <SidebarLink href='/category' onClick={toggle} smooth={true} duration={500} spy="true"  exact='true' offset={-80} >Category</SidebarLink>
-          <SidebarLink href='/cart' onClick={toggle} smooth={true} duration={500} spy="true" exact='true' offset={-80}>Cart ({cartProducts.length})</SidebarLink>
+          <SidebarLink href='/category' onClick={toggle} smooth="true" duration={500} spy="true"  exact='true' offset={-80} >Category</SidebarLink>
+          <SidebarLink href='/cart' onClick={toggle} smooth="true"  duration={500} spy="true" exact='true' offset={-80}>Cart ({cartProducts.length})</SidebarLink>
+          <SideBtnWrap>
+          <SidebarRoute href="/signin" style={{ fontWeight:'bold'}}>Sign In</SidebarRoute>
+        </SideBtnWrap>
         </SidebarMenu>
         
 
           
-        <SideBtnWrap>
-          <SidebarRoute href="/signin">Sign In</SidebarRoute>
-        </SideBtnWrap>
+        
       </SidebarWrapper>
     </SidebarContainer>
   );

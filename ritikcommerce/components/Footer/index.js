@@ -2,6 +2,7 @@ import React from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 import { FaFacebook, FaInstagram, FaYoutube, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { FooterContainer, FooterWrapper, FooterLinksContainer, FooterLinksWrapper, FooterLinkItems, FooterLinkTitle, FooterLink, SocialMedia, SocialMediaWrapper, SocialLogo, WebsiteRights, SocialIcons, SocialIconLink } from './Element';
+import Image from 'next/image';
 
 const Footer = () => {
   const toggleHome = () => {
@@ -44,7 +45,7 @@ const Footer = () => {
         <SocialMedia>
           <SocialMediaWrapper>
             <SocialLogo href='/' onClick={toggleHome}>
-              NazCommerce
+            <Image src={'/logo.png'} alt='logo' width={30} height={30} style={{borderRadius: '40px' ,marginRight:'10px'}} />NazCommerce
             </SocialLogo>
             <WebsiteRights>NazCommerce © {new Date().getFullYear()} All rights reserved.</WebsiteRights>
             <SocialIcons>

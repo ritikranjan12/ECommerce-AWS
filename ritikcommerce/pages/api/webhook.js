@@ -1,7 +1,7 @@
 const stripe = require('stripe')(process.env.STRIPE_SK);
 import {buffer} from 'micro';
 import { UpdateOrder } from '@/db';
-const endpointSecret = "whsec_ec4031576ff91276ff2bcdb058bf519317cea0e13d132dfa48a4bb7a95dcac10";
+const endpointSecret = "we_1O7PrYSFhLTLc5m43dN7U7vh";
 
 export default async function Handler(req,res) {
   const sig = req.headers['stripe-signature'];

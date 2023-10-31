@@ -111,8 +111,9 @@ const NewsLetter = () => {
         style={{
           maxWidth: '100%',
           display: 'flex',
-          justifyContent: 'center',
+          justifyItems: 'center',
           alignItems: 'center',
+          margin:'auto'
         }}
       >
         <Image src={'/category.png'} alt="heading Poster" width={400} height={300} />

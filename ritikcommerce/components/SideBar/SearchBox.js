@@ -14,7 +14,7 @@ const SearchInput = styled.input`
   border-radius: 4px;
   margin-right: 10px;
   margin-left: 10px;
-  margin-top: 20px;
+  margin-top: 50px;
   font-size: 16px;
   outline: none;
   transition: border 0.3s;
@@ -23,6 +23,12 @@ const SearchInput = styled.input`
   &:focus {
     border-color: #007bff;
   }
+  @media (min-width: 768px) {
+    margin-top: 20px;
+  }
+  @media (min-width: 400px) {
+    margin-top: 20px;
+  }
 `;
 
 const SearchButton = styled.button`
@@ -30,7 +36,7 @@ const SearchButton = styled.button`
   background-color: #007bff;
   color: #fff;
   border: none;
-  margin-right: 10px;
+  margin-left: 10px;
   margin-top: 20px;
   border-radius: 4px;
   font-size: 16px;
@@ -38,6 +44,13 @@ const SearchButton = styled.button`
 
   &:hover {
     background-color: #0056b3;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 20px;
+  }
+  @media (min-width: 400px) {
+    margin-top: 20px;
   }
 `;
 

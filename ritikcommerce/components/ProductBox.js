@@ -66,7 +66,7 @@ export default function ProductBox({id,title,description,price,images,featured,d
   const url = '/product/'+id;
   useEffect(() => {
     if (cartProducts.length > 0) {
-      // console.log(product.id);
+      // console.log(cartProducts);
       const cartItem = cartProducts.filter(item => item.id === id.toString());
       // console.log(cartItem);
       if(cartItem){

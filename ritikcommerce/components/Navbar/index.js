@@ -6,6 +6,7 @@ import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, Nav
 import {useContext} from "react";
 import {CartContext} from "@/components/CartContext";
 import SearchBar from '../SearchBar';
+import Image from 'next/image';
 const Navbar = ({ toggle }) => {
   const {cartProducts} = useContext(CartContext);
   const [scrollNav, setScrollNav] = useState(false);
@@ -32,6 +33,7 @@ const Navbar = ({ toggle }) => {
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
             <NavLogo href='/' onClick={toggleHome}>
+              <Image src={'/logo.png'} alt='logo' width={30} height={30} style={{borderRadius: '40px' ,marginRight:'10px'}} />
               NazCommerce
           </NavLogo>
             <MenuIcon onClick={toggle}>
