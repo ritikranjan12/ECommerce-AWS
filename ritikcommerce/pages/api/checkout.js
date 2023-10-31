@@ -1,7 +1,7 @@
 const stripe = require('stripe')(process.env.STRIPE_SK);
 import {PostOrder, featuredProducts} from  '../../db';
 
-PUBLIC_URL = 'https://e-commerce-aws.vercel.app';
+const PUBLIC_URL = 'https://e-commerce-aws.vercel.app';
 
 export default async function handler(req,res) {
   if (req.method !== 'POST') {
@@ -47,9 +47,6 @@ export default async function handler(req,res) {
     country
   }
   const orderId = await PostOrder(data);
-
-
-
   const session = await stripe.checkout.sessions.create({
     line_items,
     mode: 'payment',
